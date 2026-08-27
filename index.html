@@ -828,7 +828,11 @@ function buildPager(tabId){
   var pager=document.getElementById('pager-'+tabId);
   if(!pager) return;
   var footer=pager.closest('footer.question-list-pager');
-  if(pages<=1){ if(footer) footer.style.display='none'; return; }
+  if(pages<=1){
+    if(footer) footer.style.display='';
+    pager.innerHTML='<div class="item disabled"><div class="qianpage"></div></div><div class="item active">1</div><div class="item disabled"><div class="houpage"></div></div>';
+    return;
+  }
   if(footer) footer.style.display='';
   var cur=curPage[tabId]||0;
   var html='';
